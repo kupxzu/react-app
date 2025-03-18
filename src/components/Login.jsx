@@ -28,6 +28,7 @@ const Login = () => {
 
     try {
       // Using the unified login endpoint
+      
       const response = await axios.post('/api/login', credentials);
       
       // Store token and user data in localStorage
@@ -45,6 +46,8 @@ const Login = () => {
         navigate('/user/dashboard');
       }
     } catch (err) {
+      console.error('Login error details:', err.response?.data);
+      console.error('Login error status:', err.response?.status);
       console.error('Login error:', err);
       setError(err.response?.data?.message || 'Login failed. Please try again.');
     } finally {

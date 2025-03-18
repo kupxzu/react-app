@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Login from './components/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import NotFound from './components/NotFound';
+import ForgotPassword from './components/ForgotPassword';
+import Messenger from './components/Messenger';
 
 // SuperAdmin components
 import SuperAdminDashboard from './components/superadmin/Dashboard';
@@ -34,6 +36,7 @@ function App() {
         {/* Public route */}
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         
         {/* SuperAdmin routes */}
         <Route path="/superadmin" element={<ProtectedRoute allowedRole="superadmin" />}>
@@ -41,12 +44,14 @@ function App() {
           <Route path="users" element={<SuperAdminUsersList />} />
           <Route path="profile" element={<SuperAdminProfile />} />
           <Route path="admins" element={<SuperAdminsList />} />
+          <Route path="messages" element={<Messenger />} />
         </Route>
         
         {/* User routes */}
         <Route path="/user" element={<ProtectedRoute allowedRole="user" />}>
           <Route path="dashboard" element={<UserDashboard />} />
           <Route path="profile" element={<UserProfile />} />
+          <Route path="messages" element={<Messenger />} />
         </Route>
         
         {/* 404 Not Found */}
