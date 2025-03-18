@@ -388,16 +388,6 @@ class ConversationController extends Controller
 
 
 
-
-
-INSTALL
-=============
-composer require predis/predis
-=============
-
-
-
-
 ENV
 =============
 APP_NAME=Laravel
@@ -463,4 +453,23 @@ VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 
 
 REACT_APP_API_URL=http://localhost:8000/api
+
+
+
+
+
+RUN
+=============
+laravel: php artisan queue:work
+
+react: composer require predis/predis
+react: laravel-echo-server start
+
+
+INSTALL REDIS
+=============
+install redis to the https://github.com/tporadowski/redis/releases
+- Redis-x64-5.0.14.1.msi
+
+
 
